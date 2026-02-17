@@ -1,0 +1,12 @@
+# Beads
+.beads/
+
+# Binaries
+*.exe
+*.test
+*.out
+
+# IDE
+.idea/
+.vscode/
+*.swp
