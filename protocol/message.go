@@ -8,7 +8,7 @@ const ProtocolVersion = 1
 
 // --- Orchestrator -> Agent messages ---
 
-// InitMessageis the first message sent to an agent after spawn.
+// InitMessage is the first message sent to an agent after spawn.
 // Tells the agent about its resource budget and behavioral constraints
 // bfore any task is assigned.
 //
@@ -33,7 +33,7 @@ type TaskMessage struct {
 	ID string `json:"id"` // unique task identifier
 	Prompt string `json:"prompt"` // what the agent should do
 	Repo string `json:"repo"` // working directory
-	Spec string `json:"spec,omitempty` // optional path to a spec file
+	Spec string `json:"spec,omitempty"` // optional path to a spec file
 	// TODO: context - prior failure output for test-driven supervision retries
 	// TODO: files - list of files the agent should focus on (narrows scope)
 	// TODO: depends_on - IDs of tasks that must complete first (for futur task graph)
@@ -74,9 +74,9 @@ type HeartbeatMessage struct {
 	State string `json:"state"` // "running"
 	Tool string `json:"tool"` // what tool is currently active
 	Detail string `json:"detail"`
-	RSSMB float64 `json:"rss_mb`
+	RSSMB float64 `json:"rss_mb"`
 	TokensIn int `json:"tokens_in"`
-	TokensOut int `json:"tokens_out`
+	TokensOut int `json:"tokens_out"`
 	ElapsedS float64 `json:"elapsed_s"`
 	// TODO: cost_usd - agent-reported cost so far (agent knows the model + pricing)
 	// TODO: files_touched - files modified since last heartbeat (enables live monitoring)
@@ -102,12 +102,12 @@ type CompleteMessage struct {
 	Version int `json:"v"` // protocol version
 	ID string `json:"id"`
 	State string `json:"state"`
-	Summary string `json:"summary,omitempty` // on success
-	Error string `json:"error,omitempty` // on failure
+	Summary string `json:"summary,omitempty"` // on success
+	Error string `json:"error,omitempty"` // on failure
 	FilesChanged []string `json:"files_changed,omitempty"`
 	TokensIn int `json:"tokens_in"` // final totals
-	TokensOut int `json:"tokens_out`
-	ElapsedS float64 `json:"elapsed_s`
+	TokensOut int `json:"tokens_out"`
+	ElapsedS float64 `json:"elapsed_s"`
 	// TODO: cost_usd - total cost for the task
 	// TODO: exit_code - agent's self-reported exit status (separate from OS exit code)
 }
