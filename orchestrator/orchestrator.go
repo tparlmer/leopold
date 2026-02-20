@@ -158,7 +158,7 @@ func (o *Orchestrator) RunTask(taskID, prompt, repo string) (*protocol.CompleteM
 			if result.err != nil {
 				cmd.Process.Kill()
 				<-waitCh
-				return nil, fmt.Errorf("agent protocol error: %w ")
+				return nil, fmt.Errorf("agent protocol error: %w ", err)
 			}
 
 			// Valid message - agent is alive, reset the watchdog
